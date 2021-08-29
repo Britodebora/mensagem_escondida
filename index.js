@@ -6,11 +6,14 @@ formulario.addEventListener('submit', function (evento) {
     var criptografia = formulario.criptografia.value;
     var acao = formulario.acao.value;
     var resultado = '';
+    if (formulario.incremento.value != null) {
+        var incremento = formulario.incremento.value;
+    }
 
     if (criptografia == 'base64') {
         resultado = base64(acao, mensagem);
     } else {
-        resultado = cesar(acao, mensagem);
+        resultado = cesar(acao, mensagem, incremento);
     }
 
     var resultadoContainer = document.getElementById('resultado');
@@ -28,9 +31,12 @@ function base64(acao, mensagem) {
     }
 }
 
-function cesar(acao, mensagem) {
-    incremento = 7;
+function cesar(acao, mensagem, incremento_antigo) {
     var resultado = '';
+    var incremento = 0;
+    if(incremento_antigo != null){
+        incremento = parseInt(incremento_antigo);
+    }
     for (var i = 0; i < mensagem.length; i++) {
         var letra = mensagem[i];
         var code = letra.charCodeAt();
@@ -44,3 +50,23 @@ function cesar(acao, mensagem) {
     }
     return resultado;
 }
+
+document.getElementById('criptografia').addEventListener('change', function () {
+    if (this.value == "cifra") {
+        document.getElementById('div-incremento').hidden = false;
+    } else {
+        document.getElementById('div-incremento').hidden = true;
+    }
+});
+
+document.getElementById('codificar').addEventListener('change', function () {
+    if (this.value == "codificar") {
+        document.getElementById('botao').innerHTML = "<button class='btn btn-primary mb-2' type='submit' value='Codificar'>Codificar</button>";
+    }
+});
+
+document.getElementById('decodificar').addEventListener('change', function () {
+    if (this.value == "decodificar") {
+        document.getElementById('botao').innerHTML = "<button class='btn btn-primary mb-2' type='submit' value='Codificar'>Decodificar</button>";
+    }
+});
