@@ -61,12 +61,12 @@ document.getElementById('criptografia').addEventListener('change', function () {
 
 document.getElementById('codificar').addEventListener('change', function () {
     if (this.value == "codificar") {
-        document.getElementById('botao').innerHTML = "<button class='btn btn-primary mb-2' type='submit' value='Codificar'>Codificar</button>";
+        document.getElementById('botao').innerHTML = "<button class='btn btn-primary mb-2' type='submit' value='Codificar'>Codificar Mensagem!</button>";
     }
 });
 
 document.getElementById('decodificar').addEventListener('change', function () {
     if (this.value == "decodificar") {
-        document.getElementById('botao').innerHTML = "<button class='btn btn-primary mb-2' type='submit' value='Codificar'>Decodificar</button>";
+        document.getElementById('botao').innerHTML = "<button class='btn btn-primary mb-2' type='submit' value='Codificar'>Decodificar Mensagem!</button>";
     }
 });
